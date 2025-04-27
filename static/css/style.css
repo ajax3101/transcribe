@@ -1,0 +1,80 @@
+/* Стили кнопки */
+.download-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .download-btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* Стили модального окна */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Содержимое модального окна */
+  .modal-content {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 300px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+  
+  /* Кнопки в модалке */
+  .modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn.confirm {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn.cancel {
+    background-color: #dc3545;
+    color: white;
+  }
+  #lyrics span {
+    font-size: 24px;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+  #lyrics span.highlight {
+    color: red;
+    font-weight: bold;
+}
