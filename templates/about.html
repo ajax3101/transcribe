@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}About - Karaoke App{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="animated-heading">About Karaoke App</h1>
+    <p class="animated-text mt-4">
+        Karaoke App — это простое, но мощное веб-приложение для распознавания текста песен
+        и создания эффекта караоке в реальном времени.<br>
+        Здесь вы можете загружать MP3-файлы и видеть текст синхронизированно с музыкой!
+    </p>
+
+    <a href="/" class="btn btn-primary btn-lg mt-4 animated-button">
+        ⬅️ Back to Upload
+    </a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/about.js') }}"></script>
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}

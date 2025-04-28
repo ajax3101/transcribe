@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Karaoke App{% endblock %}</title>
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Karaoke App{% endblock %}</title>
+
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Karaoke App</a>
-    </nav>
-    <div class="container mt-5">
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="alert alert-warning" role="alert">
-              {% for message in messages %}
-                {{ message }}
-              {% endfor %}
-            </div>
-          {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
-    </div>
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">🎤 Karaoke App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+  
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Upload</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link {% if request.path.startswith('/recent') %}active{% endif %}" href="/recent">Recent Files</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link {% if request.path.startswith('/about') %}active{% endif %}" href="/about">About</a>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+<div class="container mt-5">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-warning" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  
+  {% block content %}{% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+
+{% block extra_js %}{% endblock %}
 </body>
 </html>

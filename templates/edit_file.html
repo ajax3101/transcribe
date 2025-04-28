@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Edit File{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Edit File</h1>
+
+<form method="POST" class="mt-5" style="max-width: 500px; margin: auto;">
+  <div class="mb-3">
+    <label class="form-label">Filename</label>
+    <input type="text" class="form-control" value="{{ file.name }}" disabled>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <input type="text" name="status" class="form-control" value="{{ file.status }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Mode</label>
+    <input type="text" name="mode" class="form-control" value="{{ file.mode }}">
+  </div>
+
+  <button type="submit" class="btn btn-success">Save</button>
+  <a href="{{ url_for('admin_files') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
